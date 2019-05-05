@@ -6,7 +6,6 @@
     using OpenQA.Selenium.Chrome;
     using DemoQA_Automation.Pages;
     using DemoQA_Automation.Pages.Sections.Sortable;
-    using System.Threading;
 
     [TestFixture]
     public class SortableTests
@@ -21,8 +20,9 @@
             driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             driver.Manage().Window.Maximize();
             HomePage = new HomePage(driver);
-            Sortable = new Sortable(driver);
             HomePage.Navigate();
+
+            Sortable = new Sortable(driver);
         }
 
         [TearDown]
@@ -41,9 +41,9 @@
         }
 
         /*Sortable Functionality - Test Scenario: 
-            Item 2 to be moved below Item 5
-            Item 6 to be moved above Item 1
-            Item 7 to be moved between Item 5 and 2*/
+            1. Item 2 to be moved below Item 5
+            2. Item 6 to be moved above Item 1
+            3. Item 7 to be moved between Item 5 and 2 */
 
         [Test]
         public void SortableSection_WorksAsExpected()

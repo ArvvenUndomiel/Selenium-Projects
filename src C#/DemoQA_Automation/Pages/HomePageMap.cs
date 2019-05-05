@@ -11,5 +11,8 @@
         public IWebElement SortableButton => Wait.
             Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[1]/ul/li[1]/a")); });
 
+        public IWebElement SelectableButton => Wait.
+            Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[1]/ul/li[2]/a")); });
+
     }
 }
