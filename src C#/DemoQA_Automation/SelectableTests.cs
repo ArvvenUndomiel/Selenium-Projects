@@ -8,7 +8,6 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Reflection;
-    using System.Threading;
 
     [TestFixture]
     public class SelectableTests
@@ -44,50 +43,15 @@
             Assert.That("Selectable" == title);
         }
 
-        /*Selectable functionality - Test Scenario 1:
-           1. Item 4's color is white
-           2. Click on Item 4
-           => Color of Item 4 changes to orange
+
+        /*Selectable functionality - Test Scenario:
+           1. Click on each item
+           => Color of item changes to orange
         */
-
-        [Test]
-        public void SelectableFunctionality_Scenario1()
-        {
-            HomePage.SelectableButton.Click();
-
-            Assert.That(Selectable.NormalColor_ShouldBeWhite(Selectable.Item4));
-
-            Selectable.Item4.Click();
-
-            Assert.That(Selectable.OnClick_ColorShouldBecomeOrange(Selectable.Item4));
-        }
-
-        /*Selectable functionality - Test Scenario 2:
-           1. Click on Item 4
-           => Color of Item 4 changes to orange
-           2. Click on Item 2
-           => Color of Item 4 goes back to white, color of Item 2 becomes orange
-        */
-
-            [Test]
-        public void SelectableFunctionality_Scenario2()
-        {
-            HomePage.SelectableButton.Click();
-            Selectable.Item4.Click();
-            Assert.That(Selectable.OnClick_ColorShouldBecomeOrange(Selectable.Item4));
-
-            Selectable.Item2.Click();
-
-            Assert.That(Selectable.NormalColor_ShouldBeWhite(Selectable.Item4));
-            Assert.That(Selectable.OnClick_ColorShouldBecomeOrange(Selectable.Item2));
-
-        }
-
-        //Scenario3
 
 
         [Test]
-        public void Scenario3_Tests()
+        public void SelectableFunctionality_WorksAsExpected()
         {
             HomePage.SelectableButton.Click();
 
@@ -95,7 +59,7 @@
             foreach (var element in selectables)
             {
                 element.Click();
-                Thread.Sleep(2000);
+                Assert.That(Selectable.OnClick_ColorShouldBecomeOrange(element));
             }            
         }
 

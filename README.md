@@ -3,5 +3,6 @@
 This repository will hold projects for automation of various practice websites.
 First website will be https://demoqa.com/ but in time more and more projects will be added.
 
-Selenium Webdriver Framework
-POM model
+At the moment automation will be written in C# using Selenium Webdriver and Nunit frameworks.
+
+All projects will be based on the POM design pattern.
