@@ -43,8 +43,8 @@
 
         /* Resizable Functionality - Test Scenario
          1. Expand the box with 150px to the right and to the bottom
-         2. Verify that the size of the expanded box is 283x283px +-1px
-          */
+         => Verify that the size of the expanded box is 283x283px +-1px */
+         
 
         [Test]
         public void ResizableFunctionality_WorksAsExpected()

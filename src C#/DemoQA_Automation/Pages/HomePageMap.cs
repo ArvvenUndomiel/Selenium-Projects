@@ -1,7 +1,6 @@
 ﻿namespace DemoQA_Automation.Pages
 {
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Interactions;
 
     public partial class HomePage
     {
@@ -19,5 +18,7 @@
         public IWebElement ResizableButton => Wait.
             Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[1]/ul/li[3]/a")); });
 
+        public IWebElement DroppableButton => Wait.
+            Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[1]/ul/li[4]/a")); });
     }
 }
