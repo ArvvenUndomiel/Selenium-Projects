@@ -6,6 +6,7 @@
     using OpenQA.Selenium.Chrome;
     using DemoQA_Automation.Pages;
     using DemoQA_Automation.Pages.Sections.Droppable;
+    using OpenQA.Selenium.Interactions;
 
     [TestFixture]
     public class DroppableTests
@@ -51,6 +52,14 @@
         {
             HomePage.DroppableButton.Click();
 
+            Droppable.builder.DragAndDrop(Droppable.Box, Droppable.Target).Perform();
+
+            string targetText = Droppable.Target.Text;
+            string targetColor = Droppable.Target.GetCssValue("background-color");
+
+            Assert.That("Drop here" != targetText && "Dropped!" == targetText);
+            Assert.That("rgba(255, 250, 144, 1)" == targetColor);
+            
         }
     }
 }
