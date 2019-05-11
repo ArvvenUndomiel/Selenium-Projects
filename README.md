@@ -5,4 +5,7 @@ First website will be https://demoqa.com/ but in time more and more projects wil
 
 At the moment automation will be written in C# using Selenium Webdriver and Nunit frameworks.
 
-All projects will be based on the POM design pattern.
+Design patterns implemented:
+POM
+DRY (in progress)
+Hermetic test

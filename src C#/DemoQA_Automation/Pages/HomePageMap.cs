@@ -20,5 +20,8 @@
 
         public IWebElement DroppableButton => Wait.
             Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[1]/ul/li[4]/a")); });
+
+        public IWebElement DraggableButton => Wait.
+            Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[1]/ul/li[5]/a")); });
     }
 }

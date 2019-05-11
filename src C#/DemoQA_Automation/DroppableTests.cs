@@ -1,46 +1,29 @@
 ﻿namespace DemoQA_Automation
 {
-    using System.IO;
-    using System.Reflection;
     using NUnit.Framework;
-    using OpenQA.Selenium.Chrome;
     using DemoQA_Automation.Pages;
     using DemoQA_Automation.Pages.Sections.Droppable;
-    using OpenQA.Selenium.Interactions;
 
     [TestFixture]
-    public class DroppableTests
+    public class DroppableTests : TestsBase
     {
-        private ChromeDriver driver;
-        private HomePage HomePage;
         private Droppable Droppable;
 
         [SetUp]
         public void SetUp()
         {
-            driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-            driver.Manage().Window.Maximize();
-
-            HomePage = new HomePage(driver);
-            HomePage.Navigate();
-
             Droppable = new Droppable(driver);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
+            HomePage.DroppableButton.Click();
         }
 
         [Test]
         public void DroppableSection_CanBeAccessed()
         {
-            HomePage.DroppableButton.Click();
+            string heading = HomePage.GetSectionHeading();
+            string url = HomePage.GetSectionURL();
 
-            string title = HomePage.EntryTitle.Text;
-
-            Assert.That("Droppable" == title);
+            Assert.That("Droppable" == heading);
+            Assert.That("https://demoqa.com/droppable/" == url);
         }
 
         /* Droppable Functionality - Test Scenario
@@ -50,8 +33,6 @@
         [Test]
         public void DroppableFunctionality_WorksAsExpected()
         {
-            HomePage.DroppableButton.Click();
-
             Droppable.builder.DragAndDrop(Droppable.Box, Droppable.Target).Perform();
 
             string targetText = Droppable.Target.Text;

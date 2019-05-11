@@ -1,43 +1,29 @@
 ﻿namespace DemoQA_Automation
 {
-    using System.IO;
-    using System.Reflection;
     using NUnit.Framework;
-    using OpenQA.Selenium.Chrome;
     using DemoQA_Automation.Pages;
     using DemoQA_Automation.Pages.Sections.Sortable;
 
     [TestFixture]
-    public class SortableTests
+    public class SortableTests : TestsBase
     {
-        private ChromeDriver driver;
-        private HomePage HomePage;
         private Sortable Sortable;
 
         [SetUp]
         public void SetUp()
         {
-            driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
-            driver.Manage().Window.Maximize();
-            HomePage = new HomePage(driver);
-            HomePage.Navigate();
-
             Sortable = new Sortable(driver);
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            driver.Quit();
+            HomePage.SortableButton.Click();
         }
 
         [Test]
         public void SortableSection_CanBeAccessed()
         {
-            HomePage.SortableButton.Click();
+            string heading = HomePage.GetSectionHeading();
+            string url = HomePage.GetSectionURL();
 
-            string title = HomePage.EntryTitle.Text;
-            Assert.That("Sortable" == title);
+            Assert.That("Sortable" == heading);
+            Assert.That("https://demoqa.com/sortable/" == url);
         }
 
         /*Sortable Functionality - Test Scenario: 
@@ -48,7 +34,6 @@
         [Test]
         public void SortableSection_WorksAsExpected()
         {
-            HomePage.SortableButton.Click();
             Sortable.builder.DragAndDropToOffset(Sortable.Item2, 0, 125).Perform();
             Sortable.builder.DragAndDropToOffset(Sortable.Item6, 0, -185).Perform();
             Sortable.builder.DragAndDropToOffset(Sortable.Item7, 0, -50).Perform();
