@@ -1,4 +1,4 @@
-﻿namespace DemoQA_Automation
+﻿namespace DemoQA_Automation.SectionTests
 {
     using NUnit.Framework;
     using DemoQA_Automation.Pages;

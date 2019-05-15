@@ -23,5 +23,11 @@
 
         public IWebElement DraggableButton => Wait.
             Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[1]/ul/li[5]/a")); });
+
+        public IWebElement ToolTipButton => Wait.
+            Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[2]/ul/li[1]/a")); });
+
+        public IWebElement TabsButton => Wait.
+            Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[2]/ul/li[2]/a")); });
     }
 }

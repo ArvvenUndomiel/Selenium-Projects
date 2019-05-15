@@ -1,4 +1,4 @@
-﻿namespace DemoQA_Automation
+﻿namespace DemoQA_Automation.SectionTests
 {
     using DemoQA_Automation.Pages;
     using DemoQA_Automation.Pages.Sections.Selectable;
