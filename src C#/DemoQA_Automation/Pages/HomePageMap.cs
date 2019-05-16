@@ -29,5 +29,8 @@
 
         public IWebElement TabsButton => Wait.
             Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[2]/ul/li[2]/a")); });
+
+        public IWebElement SpinnerButton => Wait.
+            Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[2]/ul/li[3]/a")); });
     }
 }
