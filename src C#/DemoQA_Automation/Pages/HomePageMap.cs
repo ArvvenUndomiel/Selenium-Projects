@@ -32,5 +32,8 @@
 
         public IWebElement SpinnerButton => Wait.
             Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[2]/ul/li[3]/a")); });
+
+        public IWebElement SliderButton => Wait.
+            Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[2]/ul/li[4]/a")); });
     }
 }
