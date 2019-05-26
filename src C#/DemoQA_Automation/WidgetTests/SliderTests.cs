@@ -35,7 +35,7 @@
 
             Slider.SlideHandle(-100);
             int newPosition = Slider.GetHandlePosition();
-            
+            Assert.That(newPosition < position);
         }
     }
 }
