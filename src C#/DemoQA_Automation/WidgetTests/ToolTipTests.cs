@@ -29,7 +29,7 @@
         //Test Scenario for static tool tip - get the text of the tool tip
 
         [Test]
-        public void ToolTip_WorksAsExpected()
+        public void ToolTipSection_HoveringOnToolTipRevealsAMessage()
         {
             string text = ToolTip.InputField.GetAttribute("title");
 

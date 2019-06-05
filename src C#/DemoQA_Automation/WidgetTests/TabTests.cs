@@ -34,7 +34,7 @@
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]
-        public void TabsFunctionality_WorksAsExpected(int idNumber)
+        public void TabsSection_TabsCanBeSelectedAndTextDisplayed(int idNumber)
         {
             IWebElement tab = Tabs.LocateTab(idNumber);
             tab.Click();

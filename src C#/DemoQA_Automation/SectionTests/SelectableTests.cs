@@ -36,7 +36,7 @@
 
 
         [Test]
-        public void SelectableFunctionality_WorksAsExpected()
+        public void SelectableSection_OnSelectionItemsChangeColor()
         {
             var selectables = this.GetAllSelectables();
             foreach (var element in selectables)

@@ -32,7 +32,7 @@
         */
 
         [Test]
-        public void DraggableFunctionality_WorksAsExpected()
+        public void DraggableSection_BoxCanBeDragged()
         {
             Draggable.DragBox(150, 150);
 

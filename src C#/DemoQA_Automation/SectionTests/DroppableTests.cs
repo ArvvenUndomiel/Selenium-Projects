@@ -31,7 +31,7 @@
          => Observe the color of the right box and the text changes*/
 
         [Test]
-        public void DroppableFunctionality_WorksAsExpected()
+        public void DroppableSection_BoxCanBeDragAndDropped()
         {
             Droppable.builder.DragAndDrop(Droppable.Box, Droppable.Target).Perform();
 

@@ -38,5 +38,8 @@
 
         public IWebElement DatePickerButton => Wait.
             Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[2]/ul/li[9]/a")); });
+
+        public IWebElement AccordionButton => Wait.
+            Until(d => { return d.FindElement(By.XPath("//*[@id='sidebar']/aside[2]/ul/li[14]/a")); });
     }
 }

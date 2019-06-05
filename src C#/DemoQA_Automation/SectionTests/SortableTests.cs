@@ -32,7 +32,7 @@
             3. Item 7 to be moved between Item 5 and 2 */
 
         [Test]
-        public void SortableSection_WorksAsExpected()
+        public void SortableSection_ItemsCanBeSorted()
         {
             Sortable.builder.DragAndDropToOffset(Sortable.Item2, 0, 125).Perform();
             Sortable.builder.DragAndDropToOffset(Sortable.Item6, 0, -185).Perform();

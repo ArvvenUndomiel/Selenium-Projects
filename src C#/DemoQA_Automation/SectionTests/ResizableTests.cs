@@ -33,7 +33,7 @@
 
 
         [Test]
-        public void ResizableFunctionality_WorksAsExpected()
+        public void ResizableSection_BoxCanBeExpanded()
         {
             Resizable.ExpandBox(150);
 
