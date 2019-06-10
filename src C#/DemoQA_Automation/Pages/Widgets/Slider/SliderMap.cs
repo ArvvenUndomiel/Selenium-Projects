@@ -4,7 +4,7 @@
 
     public partial class Slider
     {
-        public IWebElement SliderHandle => Wait.
+        private IWebElement SliderHandle => Wait.
             Until(d => { return d.FindElement(By.XPath("//*[@id='slider']/span")); });
     }
 }

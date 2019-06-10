@@ -1,18 +1,28 @@
 ﻿namespace DemoQA_Automation.Pages.Sections.Resizable
 {
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Interactions;
+    using System.Drawing;
 
     public partial class Resizable : BasePage
     {
         public Resizable(IWebDriver driver) : base(driver)
         { }
 
-        public Actions builder => new Actions(Driver);
-
-        public void ExpandBox(int pixels)
+        public Size GetBoxSize()
         {
-            this.builder.DragAndDropToOffset(this.BoxHandle, pixels, pixels).Perform();
+            return this.Box.Size;
+        }
+
+        public void ExpandBox(int pixelWidth, int pixelHeight)
+        {
+            this.builder.DragAndDropToOffset(this.BoxHandle, pixelWidth, pixelHeight).Perform();
+        }
+
+        public void RetractBox(int pixelWidth, int pixelHeight)
+        {
+            pixelWidth *= -1;
+            pixelHeight *= -1;
+            this.builder.DragAndDropToOffset(this.BoxHandle, pixelWidth, pixelHeight).Perform();
         }
     }
 }

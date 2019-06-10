@@ -7,6 +7,11 @@
         public Selectable(IWebDriver driver) : base(driver)
         {}
 
+        /// <summary>
+        /// This method will verify if on click the color of the element has changed to orange.
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
         public bool OnClick_ColorShouldBecomeOrange(IWebElement element)
         {
             string changeColor = element.GetCssValue("background-color");

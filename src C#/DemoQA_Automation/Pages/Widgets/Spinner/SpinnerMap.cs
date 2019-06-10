@@ -5,33 +5,33 @@
 
     public partial class Spinner
     {
-        public IWebElement SetValueTo5Button => Wait.
+        private IWebElement SetValueTo5Button => Wait.
             Until(d => { return d.FindElement(By.Id("setvalue")); });
 
-        public IWebElement UpArrow => Wait.
+        private IWebElement UpArrow => Wait.
             Until(d => { return d.FindElement(By.XPath("//*[@id='content']/div[2]/p[1]/span/a[1]/span[1]")); });
 
-        public IWebElement DownArrow => Wait.
+        private IWebElement DownArrow => Wait.
             Until(d => { return d.FindElement(By.XPath("//*[@id='content']/div[2]/p[1]/span/a[2]/span[1]")); });
 
         public IWebElement SpinnerField => Wait.
             Until(d => { return d.FindElement(By.Id("spinner")); });
 
-        public IWebElement DisableButton => Wait.
+        private IWebElement DisableButton => Wait.
             Until(d => { return d.FindElement(By.Id("disable")); });
 
-        public IWebElement DestroyButton => Wait.
+        private IWebElement DestroyButton => Wait.
             Until(d => { return d.FindElement(By.Id("destroy")); });
 
-        public IWebElement GetValueButton => Wait.
+        private IWebElement GetValueButton => Wait.
             Until(d => { return d.FindElement(By.Id("getvalue")); });
 
 
 
-        public IEnumerable<IWebElement> UpArrowCheck => Wait.
+        public IEnumerable<IWebElement> UpArrowElement => Wait.
            Until(d => { return d.FindElements(By.XPath("//*[@id='content']/div[2]/p[1]/span/a[1]/span[1]")); });
 
-        public IEnumerable<IWebElement> DownArrowCheck => Wait.
+        public IEnumerable<IWebElement> DownArrowElement => Wait.
             Until(d => { return d.FindElements(By.XPath("//*[@id='content']/div[2]/p[1]/span/a[2]/span[1]")); });
 
     }

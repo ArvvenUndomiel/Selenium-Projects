@@ -26,25 +26,22 @@
             Assert.That("https://demoqa.com/sortable/" == url);
         }
 
-        /*Sortable Functionality - Test Scenario: 
-            1. Item 2 to be moved below Item 5
-            2. Item 6 to be moved above Item 1
-            3. Item 7 to be moved between Item 5 and 2 */
-
         [Test]
         public void SortableSection_ItemsCanBeSorted()
         {
-            Sortable.builder.DragAndDropToOffset(Sortable.Item2, 0, 125).Perform();
-            Sortable.builder.DragAndDropToOffset(Sortable.Item6, 0, -185).Perform();
-            Sortable.builder.DragAndDropToOffset(Sortable.Item7, 0, -50).Perform();
+            Sortable.MoveItem(2, 3);
 
-            string firstItem = Sortable.Item1.Text;
-            string sixthItem = Sortable.Item6.Text;
-            string seventhItem = Sortable.Item7.Text;
+            string thirdItem = Sortable.GetItemText(3);
+            Assert.That(thirdItem == "Item 2");
 
-            Assert.That("Item 6" == firstItem);
-            Assert.That("Item 7" == sixthItem);
-            Assert.That("Item 2" == seventhItem);
+            Sortable.MoveItem(6, 1);
+
+            string firstItem = Sortable.GetItemText(1);
+            Assert.That(firstItem == "Item 6");
+
+            Sortable.MoveItem(7, 5);
+            string fifthItem = Sortable.GetItemText(5);
+            Assert.That(fifthItem == "Item 7");
         }
     }
 }

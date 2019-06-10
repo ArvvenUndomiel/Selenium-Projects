@@ -3,6 +3,8 @@
     using DemoQA_Automation.Pages;
     using DemoQA_Automation.Pages.Widgets.DatePicker;
     using NUnit.Framework;
+    using System;
+    using System.Globalization;
 
     [TestFixture]
     public class DatePickerTests : TestsBase
@@ -36,14 +38,19 @@
 
         }
 
+        [TestCase ("August 2, 2020")]
+        [TestCase ("17 September 2019")]
+        [TestCase ("01 January 2015")]
         [Test]
-        public void ChooseADate_ShouldSelectDateFromCalendar()
+        public void ChooseADate_ShouldSelectDateFromCalendar(string date)
         {
             // Choose a date in format: dd/MM/yyyy
-            string changedDate = DatePicker.ChooseADate("02 August 2020");
+            string changedDate = DatePicker.ChooseADate(date);
+            
 
-            //Format of output date is: mm/dd/yyyy
-            Assert.True(changedDate == "08/02/2020");
+            //DateTime expectedDate = DateTime.ParseExact
+            
+            Assert.AreEqual(changedDate,expectedDate);
         }
 
     }

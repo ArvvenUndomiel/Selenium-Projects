@@ -27,10 +27,6 @@
             Assert.That("https://demoqa.com/tabs/" == url);
         }
 
-        /*Test Scenario:
-         Click on each tab and verify if related text is displayed.
-        */
-
         [TestCase(1)]
         [TestCase(2)]
         [TestCase(3)]

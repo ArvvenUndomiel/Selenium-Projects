@@ -5,9 +5,9 @@
 
     public partial class Draggable
     {
-        public Actions builder => new Actions(Driver);
+        private Actions builder => new Actions(Driver);
 
-        public IWebElement Box => Wait.
+        private IWebElement Box => Wait.
             Until(d => { return d.FindElement(By.Id("draggable")); });
     }
 }

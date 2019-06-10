@@ -3,6 +3,7 @@
     using NUnit.Framework;
     using DemoQA_Automation.Pages;
     using DemoQA_Automation.Pages.Sections.Draggable;
+    using System.Drawing;
 
     [TestFixture]
     public class DraggableTests : TestsBase
@@ -26,21 +27,19 @@
             Assert.That("https://demoqa.com/draggable/" == url);
         }
 
-        /*Draggable Functionality - Test Scenario
-         1. Drag the box 150px to the left and 150px to the bottom
-         => Verify the new location of the box
-        */
 
         [Test]
         public void DraggableSection_BoxCanBeDragged()
         {
+            Point initialCoordinates = Draggable.GetBoxLocationOnPage();
+
             Draggable.DragBox(150, 150);
 
-            int X = Draggable.Box.Location.X;
-            int Y = Draggable.Box.Location.Y;
+            Point newCoordinates = Draggable.GetBoxLocationOnPage();
 
-            Assert.That(636 <= X || 638 >= X);
-            Assert.That(468 <= Y || 470 >= Y);
+            Assert.That(initialCoordinates.X < newCoordinates.X);
+            Assert.That(initialCoordinates.Y < newCoordinates.Y);
+
         }
 
     }

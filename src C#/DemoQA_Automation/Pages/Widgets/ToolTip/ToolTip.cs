@@ -7,5 +7,9 @@
         public ToolTip(IWebDriver driver) : base(driver)
         {}
 
+        public string GetTextofInputField()
+        {
+            return this.InputField.GetAttribute("title");
+        }
     }
 }

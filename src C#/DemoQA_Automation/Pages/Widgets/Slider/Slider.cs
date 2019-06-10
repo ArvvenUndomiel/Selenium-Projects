@@ -14,7 +14,7 @@
         {
             Actions builder = new Actions(Driver);
 
-            builder.DragAndDropToOffset(SliderHandle, pixels, 0).Perform();
+            builder.DragAndDropToOffset(this.SliderHandle, pixels, 0).Perform();
         }
 
         public int GetHandlePosition()

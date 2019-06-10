@@ -26,12 +26,10 @@
             Assert.That("https://demoqa.com/tooltip/" == url);
         }
 
-        //Test Scenario for static tool tip - get the text of the tool tip
-
         [Test]
         public void ToolTipSection_HoveringOnToolTipRevealsAMessage()
         {
-            string text = ToolTip.InputField.GetAttribute("title");
+            string text = ToolTip.GetTextofInputField();
 
             Assert.That("We ask for your age only for statistical purposes." == text);
         }

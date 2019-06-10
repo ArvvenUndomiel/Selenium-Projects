@@ -3,8 +3,6 @@
     using DemoQA_Automation.Pages;
     using DemoQA_Automation.Pages.Sections.Selectable;
     using NUnit.Framework;
-    using OpenQA.Selenium;
-    using System.Collections.Generic;
 
     [TestFixture]
     public class SelectableTests : TestsBase
@@ -28,37 +26,15 @@
             Assert.That("https://demoqa.com/selectable/" == url);
         }
 
-
-        /*Selectable functionality - Test Scenario:
-           1. Click on each item
-           => Color of item changes to orange
-        */
-
-
         [Test]
         public void SelectableSection_OnSelectionItemsChangeColor()
         {
-            var selectables = this.GetAllSelectables();
-            foreach (var element in selectables)
+            var items = Selectable.GetAllItems();
+            foreach (var item in items)
             {
-                element.Click();
-                Assert.That(Selectable.OnClick_ColorShouldBecomeOrange(element));
-            }            
-        }
-
-
-        private IEnumerable<IWebElement> GetAllSelectables()
-        {
-            return new List<IWebElement>
-            {
-                Selectable.Item1,
-                Selectable.Item2,
-                Selectable.Item3,
-                Selectable.Item4,
-                Selectable.Item5,
-                Selectable.Item6,
-                Selectable.Item7,
-            };
+                item.Click();
+                Assert.That(Selectable.OnClick_ColorShouldBecomeOrange(item));
+            }           
         }
     }
 }

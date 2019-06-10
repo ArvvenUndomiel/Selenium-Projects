@@ -3,6 +3,7 @@
     using NUnit.Framework;
     using DemoQA_Automation.Pages;
     using DemoQA_Automation.Pages.Sections.Resizable;
+    using System.Drawing;
 
     [TestFixture]
     public class ResizableTests : TestsBase
@@ -35,13 +36,26 @@
         [Test]
         public void ResizableSection_BoxCanBeExpanded()
         {
-            Resizable.ExpandBox(150);
+            Size initialSize = Resizable.GetBoxSize();
+            Resizable.ExpandBox(150, 150);
 
-            int width = Resizable.Box.Size.Width;
-            int height = Resizable.Box.Size.Height;
+            Size expandedSize = Resizable.GetBoxSize();
 
-            Assert.IsTrue(282 <= width || 284 >= width);
-            Assert.IsTrue(282 <= height || 284 >= height);
+            Assert.That(initialSize.Width < expandedSize.Width);
+            Assert.That(initialSize.Height < expandedSize.Height);
+        }
+
+        [Test]
+        public void ResizableSection_BoxCanBeRetracted()
+        {
+            Resizable.ExpandBox(250, 400);
+            Size expandedSize = Resizable.GetBoxSize();
+
+            Resizable.RetractBox(150, 100);
+            Size retractedSize = Resizable.GetBoxSize();
+
+            Assert.That(retractedSize.Width < expandedSize.Width);
+            Assert.That(retractedSize.Height < expandedSize.Height);
         }
     }
 }

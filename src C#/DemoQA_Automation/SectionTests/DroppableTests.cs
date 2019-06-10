@@ -26,21 +26,17 @@
             Assert.That("https://demoqa.com/droppable/" == url);
         }
 
-        /* Droppable Functionality - Test Scenario
-         1. Drag and Drop the left box inside the right box
-         => Observe the color of the right box and the text changes*/
-
         [Test]
         public void DroppableSection_BoxCanBeDragAndDropped()
         {
-            Droppable.builder.DragAndDrop(Droppable.Box, Droppable.Target).Perform();
+            Droppable.DragAndDropBoxIntoTarget();
 
-            string targetText = Droppable.Target.Text;
-            string targetColor = Droppable.Target.GetCssValue("background-color");
+            string targetText = Droppable.GetTargetText();
+            string targetColor = Droppable.GetTargetBackgroundColor();
 
             Assert.That("Drop here" != targetText && "Dropped!" == targetText);
             Assert.That("rgba(255, 250, 144, 1)" == targetColor);
-            
+
         }
     }
 }

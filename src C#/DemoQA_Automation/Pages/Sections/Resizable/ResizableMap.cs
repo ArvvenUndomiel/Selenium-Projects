@@ -1,13 +1,16 @@
 ﻿namespace DemoQA_Automation.Pages.Sections.Resizable
 {
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Interactions;
 
     public partial class Resizable
     {
-        public IWebElement BoxHandle => Wait.
+        private Actions builder => new Actions(Driver);
+
+        private IWebElement BoxHandle => Wait.
             Until(d => { return d.FindElement(By.XPath("//*[@id='resizable']/div[3]")); });
 
-        public IWebElement Box => Wait.
+        private IWebElement Box => Wait.
             Until(d => { return d.FindElement(By.Id("resizable")); });
     }
 }

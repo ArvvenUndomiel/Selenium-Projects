@@ -4,7 +4,7 @@
 
     public partial class ToolTip
     {
-        public IWebElement InputField => Wait.
+        private IWebElement InputField => Wait.
             Until(d => { return d.FindElement(By.Id("age")); });        
     }
 }
