@@ -13,17 +13,15 @@
         public void SetUp()
         {
             Droppable = new Droppable(driver);
-            HomePage.DroppableButton.Click();
+            HomePage.OpenSection("Droppable");
         }
 
         [Test]
         public void DroppableSection_CanBeAccessed()
         {
-            string heading = HomePage.GetSectionHeading();
-            string url = HomePage.GetSectionURL();
-
-            Assert.That("Droppable" == heading);
-            Assert.That("https://demoqa.com/droppable/" == url);
+            bool sectionIsLoaded = HomePage
+                .VerifySection("Droppable", "https://demoqa.com/droppable/");
+            Assert.IsTrue(sectionIsLoaded);
         }
 
         [Test]

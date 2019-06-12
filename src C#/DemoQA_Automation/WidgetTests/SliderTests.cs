@@ -13,17 +13,15 @@
         public void SetUp()
         {
             Slider = new Slider(driver);
-            HomePage.SliderButton.Click();
+            HomePage.OpenSection("Slider");
         }
 
         [Test]
         public void SliderWidget_CanBeAccessed()
         {
-            string heading = HomePage.GetSectionHeading();
-            string url = HomePage.GetSectionURL();
-
-            Assert.That(heading == "Slider");
-            Assert.That(url == "https://demoqa.com/slider/");
+            bool sectionIsLoaded = HomePage
+                .VerifySection("Slider", "https://demoqa.com/slider/");
+            Assert.IsTrue(sectionIsLoaded);
         }
 
         [Test]

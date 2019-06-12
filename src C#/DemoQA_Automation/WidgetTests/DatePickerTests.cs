@@ -15,17 +15,15 @@
         public void SetUp()
         {
             DatePicker = new DatePicker(driver);
-            HomePage.DatePickerButton.Click();
+            HomePage.OpenSection("Datepicker");
         }
 
         [Test]
         public void DatePickerWidget_CanBeAccessed()
         {
-            string heading = HomePage.GetSectionHeading();
-            string url = HomePage.GetSectionURL();
-
-            Assert.That(heading == "Datepicker");
-            Assert.That(url == "https://demoqa.com/datepicker/");
+            bool sectionIsLoaded = HomePage
+                .VerifySection("Datepicker", "https://demoqa.com/datepicker/");
+            Assert.IsTrue(sectionIsLoaded);
         }
 
         [Test]
@@ -38,19 +36,17 @@
 
         }
 
-        [TestCase ("August 2, 2020")]
+        [TestCase ("2 August 2020")]
         [TestCase ("17 September 2019")]
-        [TestCase ("01 January 2015")]
+        [TestCase ("1 January 2015")]
         [Test]
         public void ChooseADate_ShouldSelectDateFromCalendar(string date)
         {
-            // Choose a date in format: dd/MM/yyyy
+            // Choose a date in format: d MMMM yyyy
             string changedDate = DatePicker.ChooseADate(date);
-            
 
-            //DateTime expectedDate = DateTime.ParseExact
-            
-            Assert.AreEqual(changedDate,expectedDate);
+            var actual = DateTime.Parse(changedDate, CultureInfo.GetCultureInfo("en-US"));
+            Assert.AreEqual(date, actual.ToString("d MMMM yyyy"));
         }
 
     }

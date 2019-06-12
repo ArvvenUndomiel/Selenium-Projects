@@ -13,17 +13,15 @@
         public void SetUp()
         {
             Selectable = new Selectable(driver);
-            HomePage.SelectableButton.Click();
+            HomePage.OpenSection("Selectable");
         }
 
         [Test]
         public void SelectableSection_CanBeAccessed()
         {
-            string heading = HomePage.GetSectionHeading();
-            string url = HomePage.GetSectionURL();
-
-            Assert.That("Selectable" == heading);
-            Assert.That("https://demoqa.com/selectable/" == url);
+            bool sectionIsLoaded = HomePage
+                .VerifySection("Selectable", "https://demoqa.com/selectable/");
+            Assert.IsTrue(sectionIsLoaded);
         }
 
         [Test]

@@ -13,17 +13,15 @@
         public void SetUp()
         {
             ToolTip = new ToolTip(driver);
-            HomePage.ToolTipButton.Click();
+            HomePage.OpenSection("Tooltip");
         }
 
         [Test]
         public void ToolTipWidget_CanBeAccessed()
         {
-            string heading = HomePage.GetSectionHeading();
-            string url = HomePage.GetSectionURL();
-
-            Assert.That("Tooltip" == heading);
-            Assert.That("https://demoqa.com/tooltip/" == url);
+            bool sectionIsLoaded = HomePage
+                .VerifySection("Tooltip", "https://demoqa.com/tooltip/");
+            Assert.IsTrue(sectionIsLoaded);
         }
 
         [Test]

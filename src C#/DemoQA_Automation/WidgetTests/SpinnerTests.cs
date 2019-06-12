@@ -12,17 +12,15 @@
         public void SetUp()
         {
             Spinner = new Spinner(driver);
-            HomePage.SpinnerButton.Click();
+            HomePage.OpenSection("Spinner");
         }
 
         [Test]
         public void SpinnerWidget_CanBeAccessed()
         {
-            string heading = HomePage.GetSectionHeading();
-            string url = HomePage.GetSectionURL();
-
-            Assert.That("Spinner" == heading);
-            Assert.That("https://demoqa.com/spinner/" == url);
+            bool sectionIsLoaded = HomePage
+                .VerifySection("Spinner", "https://demoqa.com/spinner/");
+            Assert.IsTrue(sectionIsLoaded);
         }
 
 

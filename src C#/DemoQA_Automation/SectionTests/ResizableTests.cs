@@ -14,24 +14,16 @@
         public void SetUp()
         {
             Resizable = new Resizable(driver);
-            HomePage.ResizableButton.Click();
+            HomePage.OpenSection("Resizable");
         }
 
         [Test]
         public void ResizableSection_CanBeAccessed()
         {
-            string heading = HomePage.GetSectionHeading();
-            string url = HomePage.GetSectionURL();
-            
-
-            Assert.That("Resizable" == heading);
-            Assert.That("https://demoqa.com/resizable/" == url);
+            bool sectionIsLoaded = HomePage
+                .VerifySection("Resizable", "https://demoqa.com/resizable/");
+            Assert.IsTrue(sectionIsLoaded);
         }
-
-        /* Resizable Functionality - Test Scenario
-         1. Expand the box with 150px to the right and to the bottom
-         => Verify that the size of the expanded box is 283x283px +-1px */
-
 
         [Test]
         public void ResizableSection_BoxCanBeExpanded()

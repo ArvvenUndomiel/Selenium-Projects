@@ -14,17 +14,15 @@
         public void SetUp()
         {
             Tabs = new Tabs(driver);
-            HomePage.TabsButton.Click();
+            HomePage.OpenSection("Tabs");
         }
 
         [Test]
         public void TabsWidget_CanBeAccessed()
         {
-            string heading = HomePage.GetSectionHeading();
-            string url = HomePage.GetSectionURL();
-
-            Assert.That("Tabs" == heading);
-            Assert.That("https://demoqa.com/tabs/" == url);
+            bool sectionIsLoaded = HomePage
+                .VerifySection("Tabs", "https://demoqa.com/tabs/");
+            Assert.IsTrue(sectionIsLoaded);
         }
 
         [TestCase(1)]

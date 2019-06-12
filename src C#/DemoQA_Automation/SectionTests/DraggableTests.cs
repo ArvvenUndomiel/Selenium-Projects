@@ -14,17 +14,15 @@
         public void SetUp()
         {
             Draggable = new Draggable(driver);
-            HomePage.DraggableButton.Click();
+            HomePage.OpenSection("Draggable");
         }
 
         [Test]
         public void DraggableSection_CanBeAccessed()
         {
-            string heading = HomePage.GetSectionHeading();
-            string url = HomePage.GetSectionURL();
-
-            Assert.That("Draggable" == heading);
-            Assert.That("https://demoqa.com/draggable/" == url);
+            bool sectionIsLoaded = HomePage
+                .VerifySection("Draggable", "https://demoqa.com/draggable/");
+            Assert.IsTrue(sectionIsLoaded);
         }
 
 

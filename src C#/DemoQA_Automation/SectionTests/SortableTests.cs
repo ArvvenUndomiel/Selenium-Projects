@@ -13,17 +13,15 @@
         public void SetUp()
         {
             Sortable = new Sortable(driver);
-            HomePage.SortableButton.Click();
+            HomePage.OpenSection("Sortable");
         }
 
         [Test]
         public void SortableSection_CanBeAccessed()
         {
-            string heading = HomePage.GetSectionHeading();
-            string url = HomePage.GetSectionURL();
-
-            Assert.That("Sortable" == heading);
-            Assert.That("https://demoqa.com/sortable/" == url);
+            bool sectionIsLoaded = HomePage
+                .VerifySection("Sortable", "https://demoqa.com/sortable/");
+            Assert.IsTrue(sectionIsLoaded);
         }
 
         [Test]
