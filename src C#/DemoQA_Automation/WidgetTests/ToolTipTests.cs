@@ -17,6 +17,7 @@
         }
 
         [Test]
+        [Category("Smoke")]
         public void ToolTipWidget_CanBeAccessed()
         {
             bool sectionIsLoaded = HomePage
@@ -29,7 +30,7 @@
         {
             string text = ToolTip.GetTextofInputField();
 
-            Assert.That("We ask for your age only for statistical purposes." == text);
+            Assert.That("We ask for your age only for statistical purposes." == text, "Tooltip message not shown properly");
         }
 
     }

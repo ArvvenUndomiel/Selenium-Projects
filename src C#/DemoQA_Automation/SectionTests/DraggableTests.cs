@@ -18,6 +18,7 @@
         }
 
         [Test]
+        [Category("Smoke")]
         public void DraggableSection_CanBeAccessed()
         {
             bool sectionIsLoaded = HomePage
@@ -35,8 +36,8 @@
 
             Point newCoordinates = Draggable.GetBoxLocationOnPage();
 
-            Assert.That(initialCoordinates.X < newCoordinates.X);
-            Assert.That(initialCoordinates.Y < newCoordinates.Y);
+            Assert.That(initialCoordinates.X < newCoordinates.X, "Boxed is not dragged correctly along X axis");
+            Assert.That(initialCoordinates.Y < newCoordinates.Y, "Boxed is not dragged correctly along Y axis");
 
         }
 

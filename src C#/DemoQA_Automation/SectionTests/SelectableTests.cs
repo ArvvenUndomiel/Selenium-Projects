@@ -17,6 +17,7 @@
         }
 
         [Test]
+        [Category("Smoke")]
         public void SelectableSection_CanBeAccessed()
         {
             bool sectionIsLoaded = HomePage
@@ -31,7 +32,7 @@
             foreach (var item in items)
             {
                 item.Click();
-                Assert.That(Selectable.OnClick_ColorShouldBecomeOrange(item));
+                Assert.That(Selectable.OnClick_ColorShouldBecomeOrange(item), "Item does not change color as expected");
             }           
         }
     }

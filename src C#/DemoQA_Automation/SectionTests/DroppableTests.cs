@@ -17,6 +17,7 @@
         }
 
         [Test]
+        [Category("Smoke")]
         public void DroppableSection_CanBeAccessed()
         {
             bool sectionIsLoaded = HomePage
@@ -32,8 +33,8 @@
             string targetText = Droppable.GetTargetText();
             string targetColor = Droppable.GetTargetBackgroundColor();
 
-            Assert.That("Drop here" != targetText && "Dropped!" == targetText);
-            Assert.That("rgba(255, 250, 144, 1)" == targetColor);
+            Assert.That("Drop here" != targetText && "Dropped!" == targetText, "Text does not comply to requirements");
+            Assert.That("rgba(255, 250, 144, 1)" == targetColor, "Color change not happening as expected");
 
         }
     }

@@ -17,6 +17,7 @@
         }
 
         [Test]
+        [Category("Smoke")]
         public void SortableSection_CanBeAccessed()
         {
             bool sectionIsLoaded = HomePage
@@ -30,16 +31,16 @@
             Sortable.MoveItem(2, 3);
 
             string thirdItem = Sortable.GetItemText(3);
-            Assert.That(thirdItem == "Item 2");
+            Assert.That(thirdItem == "Item 2", "Item 2 is not on position 3");
 
             Sortable.MoveItem(6, 1);
 
             string firstItem = Sortable.GetItemText(1);
-            Assert.That(firstItem == "Item 6");
+            Assert.That(firstItem == "Item 6", "Item 6 is not on position 1");
 
             Sortable.MoveItem(7, 5);
             string fifthItem = Sortable.GetItemText(5);
-            Assert.That(fifthItem == "Item 7");
+            Assert.That(fifthItem == "Item 7", "Item 7 is not on position 5");
         }
     }
 }

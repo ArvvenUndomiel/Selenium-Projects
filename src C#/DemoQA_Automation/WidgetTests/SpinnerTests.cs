@@ -16,6 +16,7 @@
         }
 
         [Test]
+        [Category("Smoke")]
         public void SpinnerWidget_CanBeAccessed()
         {
             bool sectionIsLoaded = HomePage
@@ -36,7 +37,7 @@
             Spinner.ClickOnArrow("up", numberofClicks);
             int increasedValue = Spinner.GetValueFromSpinnerField();
 
-            Assert.That(increasedValue == initialValue + numberofClicks);
+            Assert.That(increasedValue == initialValue + numberofClicks, "Up icon cannot increment value");
         }
 
         [TestCase(2)]
@@ -51,7 +52,7 @@
             Spinner.ClickOnArrow("down", numberofClicks);
             int decreasedValue = Spinner.GetValueFromSpinnerField();
 
-            Assert.That(decreasedValue == initialValue - numberofClicks);
+            Assert.That(decreasedValue == initialValue - numberofClicks, "Down icon cannot decrement value");
 
         }
 
@@ -65,7 +66,7 @@
             Spinner.PressArrowOnKeyboard("up", numberOfTimes);
 
             int increasedValue = Spinner.GetValueFromSpinnerField();
-            Assert.That(increasedValue == 8 + numberOfTimes);
+            Assert.That(increasedValue == 8 + numberOfTimes, "Up arrow on keyboard does not increment value");
         }
 
         [TestCase(3)]
@@ -78,7 +79,7 @@
             Spinner.PressArrowOnKeyboard("down", numberOfTimes);
 
             int decreasedValue = Spinner.GetValueFromSpinnerField();
-            Assert.That(decreasedValue == 1000 - numberOfTimes);
+            Assert.That(decreasedValue == 1000 - numberOfTimes, "Down arrow on keyboard does not decrement value");
         }
 
         
@@ -86,7 +87,7 @@
         public void SetValueTo5Button_ShouldSetCorrectValue()
         {
             int value = Spinner.SetValueTo5();
-            Assert.That(value == 5);
+            Assert.That(value == 5, "Set value button does not set correct value");
         }
 
         
@@ -96,11 +97,11 @@
 
             Spinner.ClickonButton("Toggle disable/enable");
             bool enabled = Spinner.IsElementEnabled(Spinner.SpinnerField);
-            Assert.IsFalse(enabled);
+            Assert.IsFalse(enabled, "Spinner is not disabled as expected");
 
             Spinner.ClickonButton("Toggle disable/enable");
             enabled = Spinner.IsElementEnabled(Spinner.SpinnerField);
-            Assert.IsTrue(enabled);
+            Assert.IsTrue(enabled, "Spinner is not enabled as expected");
         }
 
         
@@ -108,12 +109,12 @@
         public void DestroyButton_ShouldRemoveOrAddSpinner()
         {
             Spinner.ClickonButton("Toggle widget");
-            Assert.IsEmpty(Spinner.UpArrowElement);
-            Assert.IsEmpty(Spinner.DownArrowElement);
+            Assert.IsEmpty(Spinner.UpArrowElement, "Spinner up arrow does not disappear");
+            Assert.IsEmpty(Spinner.DownArrowElement, "Spinner down arrow does not disappear");
 
             Spinner.ClickonButton("Toggle widget");
-            Assert.IsNotEmpty(Spinner.UpArrowElement);
-            Assert.IsNotEmpty(Spinner.DownArrowElement);
+            Assert.IsNotEmpty(Spinner.UpArrowElement, "Spinner up arrow does not reappear");
+            Assert.IsNotEmpty(Spinner.DownArrowElement, "Spinner down arrow does not reappear");
         }
 
         [Test]
@@ -123,7 +124,7 @@
             Spinner.ClickonButton("Get value");
 
             string text = driver.SwitchTo().Alert().Text;
-            Assert.That(text == "19");
+            Assert.That(text == "19", "Get Value button does not show alert message properly");
 
             driver.SwitchTo().Alert().Accept();
         }

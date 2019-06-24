@@ -17,6 +17,7 @@
         }
 
         [Test]
+        [Category("Smoke")]
         public void SliderWidget_CanBeAccessed()
         {
             bool sectionIsLoaded = HomePage
@@ -29,11 +30,11 @@
         {
             Slider.SlideHandle(240);
             int position = Slider.GetHandlePosition();
-            Assert.That(position > 0);
+            Assert.That(position > 0, "Slider unable to slide to the right");
 
             Slider.SlideHandle(-100);
             int newPosition = Slider.GetHandlePosition();
-            Assert.That(newPosition < position);
+            Assert.That(newPosition < position, "Slider unable to slide to the left");
         }
     }
 }

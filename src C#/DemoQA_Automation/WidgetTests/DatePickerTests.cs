@@ -19,6 +19,7 @@
         }
 
         [Test]
+        [Category("Smoke")]
         public void DatePickerWidget_CanBeAccessed()
         {
             bool sectionIsLoaded = HomePage
@@ -32,7 +33,7 @@
             var currentDate = DatePicker.GetCurrentDate().Date;
             var calendarDate = DatePicker.GetDateFromCalendar().Date;
 
-            Assert.AreEqual(currentDate, calendarDate);
+            Assert.AreEqual(currentDate, calendarDate, "Calendar date is not the same as today's date");
 
         }
 
@@ -46,7 +47,7 @@
             string changedDate = DatePicker.ChooseADate(date);
 
             var actual = DateTime.Parse(changedDate, CultureInfo.GetCultureInfo("en-US"));
-            Assert.AreEqual(date, actual.ToString("d MMMM yyyy"));
+            Assert.AreEqual(date, actual.ToString("d MMMM yyyy"), "Unable to select date");
         }
 
     }

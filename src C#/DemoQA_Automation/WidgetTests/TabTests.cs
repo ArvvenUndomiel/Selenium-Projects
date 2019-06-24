@@ -18,6 +18,7 @@
         }
 
         [Test]
+        [Category("Smoke")]
         public void TabsWidget_CanBeAccessed()
         {
             bool sectionIsLoaded = HomePage
@@ -34,7 +35,7 @@
             tab.Click();
 
             IWebElement text = Tabs.LocateText(idNumber);
-            Assert.IsTrue(text.Displayed);
+            Assert.IsTrue(text.Displayed, "Respective text for tab is not shown");
         }
     }
 }

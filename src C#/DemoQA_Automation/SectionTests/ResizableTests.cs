@@ -18,6 +18,7 @@
         }
 
         [Test]
+        [Category("Smoke")]
         public void ResizableSection_CanBeAccessed()
         {
             bool sectionIsLoaded = HomePage
@@ -33,8 +34,8 @@
 
             Size expandedSize = Resizable.GetBoxSize();
 
-            Assert.That(initialSize.Width < expandedSize.Width);
-            Assert.That(initialSize.Height < expandedSize.Height);
+            Assert.That(initialSize.Width < expandedSize.Width, "Box is not expanded correctly along X axis");
+            Assert.That(initialSize.Height < expandedSize.Height, "Box is not expanded correctly along Y axis");
         }
 
         [Test]
@@ -46,8 +47,8 @@
             Resizable.RetractBox(150, 100);
             Size retractedSize = Resizable.GetBoxSize();
 
-            Assert.That(retractedSize.Width < expandedSize.Width);
-            Assert.That(retractedSize.Height < expandedSize.Height);
+            Assert.That(retractedSize.Width < expandedSize.Width, "Box is not retracted correctly along X axis");
+            Assert.That(retractedSize.Height < expandedSize.Height, "Box is not retracted correctly along Y axis");
         }
     }
 }
