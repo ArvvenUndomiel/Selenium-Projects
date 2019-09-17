@@ -14,6 +14,7 @@
         [SetUp]
         public void GeneralSetUp()
         {
+
             driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             driver.Manage().Window.Maximize();
 
